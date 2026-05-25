@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Profit Stack Dashboard</title>
+
+  <link rel="stylesheet" href="styles/admin_dashboard.css" />
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+      <div>
+
+        <div class="logo">
+          <h2>Profit Stack</h2>
+          <p>Sales Dashboard</p>
+        </div>
+
+        <nav>
+
+          <a href="#" class="active">
+            <i class="fa-solid fa-table-columns"></i>
+            Dashboard
+          </a>
+
+          <a href="#">
+            <i class="fa-solid fa-tag"></i>
+            Sales
+          </a>
+
+          <a href="#">
+            <i class="fa-solid fa-box"></i>
+            Products
+          </a>
+
+          <a href="#">
+            <i class="fa-solid fa-users"></i>
+            Customers
+          </a>
+
+          <a href="#">
+            <i class="fa-solid fa-chart-simple"></i>
+            Analytics
+          </a>
+
+          <a href="#">
+            <i class="fa-solid fa-file"></i>
+            Reports
+          </a>
+
+          <a href="#">
+            <i class="fa-solid fa-credit-card"></i>
+            Payments
+          </a>
+
+        </nav>
+
+      </div>
+
+      <div class="settings">
+        <i class="fa-solid fa-gear"></i>
+        Settings
+      </div>
+
+    </aside>
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+      <!-- TOPBAR -->
+
+      <div class="topbar">
+
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+
+          <input type="text"
+            placeholder="Search orders, customers, products..." />
+        </div>
+
+        <div class="profile">
+
+          <i class="fa-regular fa-bell"></i>
+
+          <div class="user">
+            <h4>Admin User</h4>
+            <p>Super Admin</p>
+          </div>
+
+          <img src="https://i.pravatar.cc/100" alt="" />
+
+        </div>
+
+      </div>
+
+      <!-- HEADING -->
+
+      <div class="heading">
+
+        <div>
+          <h1>Business Overview</h1>
+          <p>Track revenue, monitor sales and analyze business growth.</p>
+        </div>
+
+        <button>Create Sale</button>
+
+      </div>
+
+      <!-- STATS -->
+
+      <section class="stats">
+
+        <div class="card">
+
+          <div class="card-top">
+            <p>Total Revenue</p>
+            <i class="fa-solid fa-wallet"></i>
+          </div>
+
+          <h2>₹4,25,000</h2>
+
+          <span class="green">+8.2% from last month</span>
+
+        </div>
+
+        <div class="card">
+
+          <div class="card-top">
+            <p>Total Orders</p>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+
+          <h2>1,240</h2>
+
+          <span class="green">+4.5% from last month</span>
+
+        </div>
+
+        <div class="card">
+
+          <div class="card-top">
+            <p>Customers</p>
+            <i class="fa-solid fa-users"></i>
+          </div>
+
+          <h2>882</h2>
+
+          <span class="red">-2.1% from last month</span>
+
+        </div>
+
+        <div class="card">
+
+          <div class="card-top">
+            <p>Monthly Growth</p>
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+
+          <h2>+12.5%</h2>
+
+          <span class="green">Above targets</span>
+
+        </div>
+
+      </section>
+
+      <!-- ANALYTICS -->
+
+      <section class="analytics">
+
+        <!-- CHART -->
+
+        <div class="chart-card">
+
+          <div class="section-top">
+
+            <div>
+              <h3>Revenue Analytics</h3>
+              <p>Financial performance over the last 30 days</p>
+            </div>
+
+            <button>Last 30 Days</button>
+
+          </div>
+
+          <div class="bars">
+
+            <div class="bar"></div>
+            <div class="bar small"></div>
+            <div class="bar dark"></div>
+            <div class="bar"></div>
+            <div class="bar small"></div>
+            <div class="bar"></div>
+            <div class="bar dark big"></div>
+
+          </div>
+
+        </div>
+
+        <!-- CUSTOMER RATING -->
+
+        <div class="rating-card">
+
+          <h3>Customer Rating</h3>
+
+          <p class="rating-sub">
+            Overall customer satisfaction
+          </p>
+
+          <div class="rating-number">
+            4.8<span>/5</span>
+          </div>
+
+          <div class="stars">
+            ★ ★ ★ ★ ★
+          </div>
+
+          <p class="review-text">
+            Based on 1,420 reviews
+          </p>
+
+          <div class="feedback-box">
+
+            <h4>92% Positive Feedback</h4>
+
+            <div class="progress-bar">
+              <div class="progress"></div>
+            </div>
+
+          </div>
+
+          <div class="rating-stats">
+
+            <div class="small-card">
+              <p>Response Rate</p>
+              <h4>98%</h4>
+            </div>
+
+            <div class="small-card">
+              <p>Retention</p>
+              <h4>85%</h4>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- TABLE -->
+
+      <section class="table-section">
+
+        <div class="section-top">
+
+          <h3>Recent Sales</h3>
+
+          <button>Filter</button>
+
+        </div>
+
+        <table>
+
+          <thead>
+
+            <tr>
+              <th>Order ID</th>
+              <th>Customer</th>
+              <th>Product</th>
+              <th>Amount</th>
+              <th>Status</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td>#ORD-2849</td>
+              <td>John Dorsey</td>
+              <td>Sales Suite</td>
+              <td>₹1,290</td>
+              <td>
+                <span class="status paid">Paid</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td>#ORD-2850</td>
+              <td>Sarah Williams</td>
+              <td>Data Connector</td>
+              <td>₹8,600</td>
+              <td>
+                <span class="status pending">Pending</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td>#ORD-2851</td>
+              <td>Marcus Brown</td>
+              <td>Premium Watch</td>
+              <td>₹12,000</td>
+              <td>
+                <span class="status paid">Paid</span>
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </section>
+
+    </main>
+
+  </div>
+<script src="scripts/admin_dashboard.js"></script>
+</body>
+
+</html>

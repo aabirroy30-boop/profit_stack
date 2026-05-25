@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>Profit Stack - Product Management</title>
+
+  <!-- GOOGLE FONT -->
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- FONT AWESOME -->
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
+  <!-- CSS -->
+
+  <link
+    rel="stylesheet"
+    href="styles/products.css"
+  >
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+      <div class="sidebar-top">
+
+        <div class="logo">
+
+          <h1>Profit Stack</h1>
+
+          <p>Enterprise Edition</p>
+
+        </div>
+
+        <ul class="menu">
+
+          <li>
+            <a href="dashboard.html">
+              <i class="fa-solid fa-table-columns"></i>
+              Dashboard
+            </a>
+          </li>
+
+          <li>
+            <a href="customer.html">
+              <i class="fa-solid fa-users"></i>
+              Customers
+            </a>
+          </li>
+
+          <li class="active">
+            <a href="products.html">
+              <i class="fa-solid fa-box"></i>
+              Products
+            </a>
+          </li>
+
+          <li>
+            <a href="sales.html">
+              <i class="fa-solid fa-money-bill-wave"></i>
+              Sales
+            </a>
+          </li>
+
+          <li>
+            <a href="reports.html">
+              <i class="fa-solid fa-chart-line"></i>
+              Reports
+            </a>
+          </li>
+
+          <li>
+            <a href="settings.html">
+              <i class="fa-solid fa-gear"></i>
+              Settings
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+      <div class="admin-card">
+
+        <div class="admin-avatar">
+          A
+        </div>
+
+        <div>
+
+          <h4>Admin Portal</h4>
+
+          <p>v4.2.0 Stable</p>
+
+        </div>
+
+      </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+      <!-- TOPBAR -->
+
+      <header class="topbar">
+
+        <div class="search-box">
+
+          <i class="fa-solid fa-magnifying-glass"></i>
+
+          <input
+            type="text"
+            placeholder="Search products..."
+          >
+
+        </div>
+
+        <div class="topbar-right">
+
+          <i class="fa-regular fa-bell icon"></i>
+
+          <div class="profile">
+
+            <div>
+
+              <h4>Admin</h4>
+
+              <span>Super User</span>
+
+            </div>
+
+            <img
+              src="https://i.pravatar.cc/100"
+              alt="profile"
+            >
+
+          </div>
+
+        </div>
+
+      </header>
+
+      <!-- PAGE HEADER -->
+
+      <section class="page-header">
+
+        <h1>Product Management</h1>
+
+        <p>
+          Add and manage products with pricing details.
+        </p>
+
+      </section>
+
+      <!-- PRODUCT FORM -->
+
+      <section class="product-form-card">
+
+        <div class="card-header">
+
+          <div>
+
+            <h2>Add New Product</h2>
+
+            <p>
+              Fill product information below
+            </p>
+
+          </div>
+
+          <div class="header-icon">
+
+            <i class="fa-solid fa-plus"></i>
+
+          </div>
+
+        </div>
+
+        <form id="productForm">
+
+          <div class="form-grid">
+
+            <!-- PRODUCT NAME -->
+
+            <div class="input-group">
+
+              <label>Product Name</label>
+
+              <div class="input-box">
+
+                <i class="fa-solid fa-box"></i>
+
+                <input
+                  type="text"
+                  id="productName"
+                  placeholder="Enter product name"
+                  required
+                >
+
+              </div>
+
+            </div>
+
+            <!-- PRICE -->
+
+            <div class="input-group">
+
+              <label>Price</label>
+
+              <div class="input-box">
+
+                <i class="fa-solid fa-dollar-sign"></i>
+
+                <input
+                  type="number"
+                  id="productPrice"
+                  placeholder="0.00"
+                  required
+                >
+
+              </div>
+
+            </div>
+
+            <!-- CATEGORY -->
+
+            <div class="input-group">
+
+              <label>Category</label>
+
+              <select id="productCategory">
+
+                <option>Software</option>
+
+                <option>Hardware</option>
+
+                <option>Accessories</option>
+
+                <option>Services</option>
+
+              </select>
+
+            </div>
+
+            <!-- STOCK -->
+
+            <div class="input-group">
+
+              <label>Stock Status</label>
+
+              <select id="stockStatus">
+
+                <option>In Stock</option>
+
+                <option>Low Stock</option>
+
+                <option>Out of Stock</option>
+
+              </select>
+
+            </div>
+
+          </div>
+
+          <!-- DESCRIPTION -->
+
+          <div class="input-group full-width">
+
+            <label>Description</label>
+
+            <textarea
+              id="productDescription"
+              rows="4"
+              placeholder="Write product description..."
+            ></textarea>
+
+          </div>
+
+          <!-- BUTTONS -->
+
+          <div class="form-buttons">
+
+            <button
+              type="reset"
+              class="cancel-btn"
+            >
+              Cancel
+            </button>
+
+            <button
+              type="submit"
+              class="add-btn"
+            >
+              Add Product
+            </button>
+
+          </div>
+
+        </form>
+
+      </section>
+
+    </main>
+
+  </div>
+
+</body>
+<script src="scripts/products.js"></script>
+</html>

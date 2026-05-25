@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profit Stack — Login</title>
+  <link rel="stylesheet" href="css/login.css"/>
+</head>
+<body>
+
+<div class="bg-animation"></div>
+
+<div class="login-wrapper">
+
+  <!-- Left Panel -->
+  <div class="login-left">
+    <div class="brand-logo">📊</div>
+    <h1>Profit Stack</h1>
+    <p>Your complete business insight & analytics platform</p>
+    <div class="feature-list">
+      <div class="feature-item">
+        <span class="icon">📈</span>
+        <span>Real-time revenue analytics</span>
+      </div>
+      <div class="feature-item">
+        <span class="icon">🛒</span>
+        <span>Sales & inventory management</span>
+      </div>
+      <div class="feature-item">
+        <span class="icon">👥</span>
+        <span>Customer relationship tracking</span>
+      </div>
+      <div class="feature-item">
+        <span class="icon">📑</span>
+        <span>Automated reports & payments</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Panel -->
+  <div class="login-right">
+    <h2>Welcome back</h2>
+    <p class="subtitle">Sign in to your Profit Stack account</p>
+
+    <!-- Role Tabs -->
+    <div class="tab-switcher">
+      <button class="tab-btn active" onclick="switchTab('user')">👤 User</button>
+      <button class="tab-btn"       onclick="switchTab('admin')">🔐 Admin</button>
+    </div>
+
+    <!-- Alert Box -->
+    <div class="alert" id="alert">
+      <span id="alert-icon">⚠️</span>
+      <span id="alert-msg"></span>
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm" autocomplete="off">
+      <div class="form-group">
+        <label>Email Address</label>
+        <div class="input-wrap">
+          <span class="input-icon">✉️</span>
+          <input type="email" id="email" placeholder="you@example.com" required/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <div class="input-wrap">
+          <span class="input-icon">🔒</span>
+          <input type="password" id="password" placeholder="Enter your password" required/>
+          <button type="button" class="toggle-password" onclick="togglePwd()" id="eyeBtn">👁️</button>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-login" id="loginBtn">
+        <div class="spinner" id="spinner"></div>
+        <span id="btnText">Sign In</span>
+      </button>
+    </form>
+
+    <div class="login-footer">
+      <p>Demo — Admin: <strong>admin@profitstack.com</strong> / <strong>admin123</strong></p>
+      <p style="margin-top:5px;">User: <strong>john@profitstack.com</strong> / <strong>user123</strong></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentTab = 'user';
+
+  // ── Tab Switch ──────────────────────────────────
+  function switchTab(role) {
+    currentTab = role;
+    document.querySelectorAll('.tab-btn').forEach((b, i) => {
+      b.classList.toggle('active', (role === 'user' && i === 0) || (role === 'admin' && i === 1));
+    });
+    clearAlert();
+    if (role === 'admin') {
+      document.getElementById('email').value    = 'admin@profitstack.com';
+      document.getElementById('password').value = 'admin123';
+    } else {
+      document.getElementById('email').value    = 'john@profitstack.com';
+      document.getElementById('password').value = 'user123';
+    }
+  }
+
+  // ── Toggle Password ─────────────────────────────
+  function togglePwd() {
+    const inp = document.getElementById('password');
+    const btn = document.getElementById('eyeBtn');
+    if (inp.type === 'password') { inp.type = 'text';     btn.textContent = '🙈'; }
+    else                         { inp.type = 'password'; btn.textContent = '👁️'; }
+  }
+
+  // ── Alert Helpers ───────────────────────────────
+  function showAlert(msg, type = 'error') {
+    const el  = document.getElementById('alert');
+    const ico = document.getElementById('alert-icon');
+    const txt = document.getElementById('alert-msg');
+    el.className  = `alert ${type}`;
+    ico.textContent = type === 'error' ? '⚠️' : '✅';
+    txt.textContent = msg;
+  }
+
+  function clearAlert() {
+    document.getElementById('alert').className = 'alert';
+  }
+
+  // ── Set Loading State ───────────────────────────
+  function setLoading(state) {
+    const btn     = document.getElementById('loginBtn');
+    const spinner = document.getElementById('spinner');
+    const txt     = document.getElementById('btnText');
+    btn.classList.toggle('loading', state);
+    spinner.style.display = state ? 'block' : 'none';
+    txt.textContent       = state ? 'Signing in…' : 'Sign In';
+  }
+
+  // ── Submit Handler ──────────────────────────────
+  document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearAlert();
+
+    const email    = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+
+    if (!email || !password) {
+      showAlert('Please fill in all fields.'); return;
+    }
+
+    setLoading(true);
+
+    try {
+      const res  = await fetch('/api/auth/login', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        showAlert(data.error || 'Login failed.'); return;
+      }
+
+      // Store token & user info
+      localStorage.setItem('ps_token', data.token);
+      localStorage.setItem('ps_user',  JSON.stringify(data.user));
+
+      showAlert('Login successful! Redirecting…', 'success');
+
+      setTimeout(() => {
+        window.location.href = 'dashboard.html';
+      }, 900);
+
+    } catch (err) {
+      showAlert('Cannot connect to server. Is it running?');
+    } finally {
+      setLoading(false);
+    }
+  });
+
+  // ── Auto-redirect if already logged in ─────────
+  window.addEventListener('load', () => {
+    const token = localStorage.getItem('ps_token');
+    if (token) window.location.href = 'dashboard.html';
+  });
+</script>
+</body>
+</html>

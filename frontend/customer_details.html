@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>Customer Details | Profit Stack</title>
+
+  <!-- GOOGLE FONT -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- FONT AWESOME -->
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
+  <!-- CSS -->
+
+  <link
+    rel="stylesheet"
+    href="styles/customer_details.css"
+  />
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+      <div class="logo">
+
+        <div class="logo-box">
+          <i class="fa-solid fa-wallet"></i>
+        </div>
+
+        <div>
+          <h2>Profit Stack</h2>
+          <p>ENTERPRISE</p>
+        </div>
+
+      </div>
+
+      <ul class="menu">
+
+        <li>
+          <a href="dashboard.html">
+            <i class="fa-solid fa-table-columns"></i>
+            Dashboard
+          </a>
+        </li>
+
+        <li class="active">
+          <a href="customer.html">
+            <i class="fa-solid fa-users"></i>
+            Customers
+          </a>
+        </li>
+
+        <li>
+          <a href="products.html">
+            <i class="fa-solid fa-box"></i>
+            Products
+          </a>
+        </li>
+
+        <li>
+          <a href="sales.html">
+            <i class="fa-solid fa-money-bill-wave"></i>
+            Sales
+          </a>
+        </li>
+
+        <li>
+          <a href="analytics.html">
+            <i class="fa-solid fa-chart-line"></i>
+            Analytics
+          </a>
+        </li>
+
+      </ul>
+
+    </aside>
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+      <!-- TOPBAR -->
+
+      <header class="topbar">
+
+        <div class="search-box">
+
+          <i class="fa-solid fa-magnifying-glass"></i>
+
+          <input
+            type="text"
+            placeholder="Search customer..."
+          />
+
+        </div>
+
+        <div class="top-right">
+
+          <i class="fa-regular fa-bell"></i>
+
+          <img
+            src="https://i.pravatar.cc/50"
+            alt="profile"
+          />
+
+        </div>
+
+      </header>
+
+      <!-- CUSTOMER PROFILE -->
+
+      <section class="profile-card">
+
+        <div class="profile-left">
+
+          <div
+            class="profile-avatar"
+            id="customerAvatar"
+          >
+            A
+          </div>
+
+          <div>
+
+            <h1 id="customerName">
+              Customer Name
+            </h1>
+
+            <p id="customerEmail">
+              customer@email.com
+            </p>
+
+            <span class="status">
+              Active Customer
+            </span>
+
+          </div>
+
+        </div>
+
+        <div class="profile-right">
+
+          <div class="info-box">
+
+            <h3>Phone</h3>
+
+            <p id="customerPhone">
+              +91 0000000000
+            </p>
+
+          </div>
+
+          <div class="info-box">
+
+            <h3>Total Products</h3>
+
+            <p id="totalProducts">
+              0
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ANALYTICS -->
+
+      <section class="analytics-grid">
+
+        <div class="analytics-card">
+
+          <i class="fa-solid fa-box"></i>
+
+          <h3 id="productsCount">
+            0
+          </h3>
+
+          <p>Products Purchased</p>
+
+        </div>
+
+        <div class="analytics-card">
+
+          <i class="fa-solid fa-money-bill"></i>
+
+          <h3>$4,250</h3>
+
+          <p>Total Spending</p>
+
+        </div>
+
+        <div class="analytics-card">
+
+          <i class="fa-solid fa-chart-line"></i>
+
+          <h3>92%</h3>
+
+          <p>Loyalty Score</p>
+
+        </div>
+
+      </section>
+
+      <!-- PRODUCT TABLE -->
+
+      <section class="product-section">
+
+        <div class="section-header">
+
+          <h2>Purchased Products</h2>
+
+        </div>
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>PRODUCT NAME</th>
+
+              <th>CATEGORY</th>
+
+              <th>STATUS</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody id="productTableBody">
+
+          </tbody>
+
+        </table>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- JS -->
+
+  <script src="scripts/customer_details.js"></script>
+
+</body>
+
+</html>

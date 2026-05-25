@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profit Stack — Dashboard</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/dashboard.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════
+     SIDEBAR
+════════════════════════════════════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="logo-icon">📊</div>
+    <h2>Profit Stack</h2>
+  </div>
+
+  <nav class="sidebar-nav">
+    <div class="nav-section-label">Main</div>
+
+    <div class="nav-item active" onclick="navigate('dashboard')">
+      <span class="nav-icon">🏠</span> Dashboard
+    </div>
+    <div class="nav-item" onclick="navigate('products')">
+      <span class="nav-icon">📦</span> Products
+    </div>
+    <div class="nav-item" onclick="navigate('customers')">
+      <span class="nav-icon">👥</span> Customers
+    </div>
+    <div class="nav-item" onclick="navigate('sales')">
+      <span class="nav-icon">🛒</span> Sales
+    </div>
+
+    <div class="nav-section-label" style="margin-top:10px;">Analytics</div>
+
+    <div class="nav-item" onclick="navigate('charts')">
+      <span class="nav-icon">📈</span> Charts
+    </div>
+    <div class="nav-item" onclick="navigate('payments')">
+      <span class="nav-icon">💳</span> Payments
+    </div>
+    <div class="nav-item" onclick="navigate('reports')">
+      <span class="nav-icon">📑</span> Reports
+    </div>
+
+    <div class="nav-section-label" id="adminLabel" style="margin-top:10px; display:none;">Admin</div>
+    <div class="nav-item" id="adminUsersNav" style="display:none;" onclick="navigate('admin')">
+      <span class="nav-icon">🔐</span> Admin Panel
+    </div>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="user-card">
+      <div class="user-avatar" id="sidebarAvatar">U</div>
+      <div class="user-info">
+        <div class="user-name" id="sidebarName">User</div>
+        <div class="user-role" id="sidebarRole">user</div>
+      </div>
+      <button class="btn-logout" onclick="logout()" title="Logout">⏻</button>
+    </div>
+  </div>
+</aside>
+
+<!-- ═══════════════════════════════════
+     MAIN CONTENT
+════════════════════════════════════ -->
+<div class="main-content">
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+      <div>
+        <div class="page-title"  id="pageTitle">Dashboard</div>
+        <div class="page-subtitle" id="pageSubtitle">Welcome back!</div>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div class="topbar-date" id="topbarDate"></div>
+      <button class="notif-btn" title="Notifications">🔔</button>
+    </div>
+  </header>
+
+  <!-- ── DASHBOARD PAGE ───────────────────── -->
+  <div class="page active" id="page-dashboard">
+    <div class="welcome-banner">
+      <h2>Good <span id="greeting">day</span>, <span id="welcomeName">User</span>! 👋</h2>
+      <p>Here's what's happening with your business today.</p>
+      <div class="quick-actions">
+        <button class="quick-btn" onclick="navigate('sales')">🛒 New Sale</button>
+        <button class="quick-btn" onclick="navigate('products')">📦 Add Product</button>
+        <button class="quick-btn" onclick="navigate('customers')">👤 Add Customer</button>
+        <button class="quick-btn" onclick="navigate('reports')">📑 Generate Report</button>
+      </div>
+    </div>
+
+    <!-- Stat Cards -->
+    <div class="stats-grid" id="statsGrid">
+      <div class="stat-card blue">
+        <div class="stat-icon">💰</div>
+        <div class="stat-info">
+          <div class="stat-label">Total Revenue</div>
+          <div class="stat-value" id="statRevenue">—</div>
+          <div class="stat-change">↑ Completed payments</div>
+        </div>
+      </div>
+      <div class="stat-card green">
+        <div class="stat-icon">🛒</div>
+        <div class="stat-info">
+          <div class="stat-label">Total Sales</div>
+          <div class="stat-value" id="statSales">—</div>
+          <div class="stat-change">↑ All time records</div>
+        </div>
+      </div>
+      <div class="stat-card yellow">
+        <div class="stat-icon">👥</div>
+        <div class="stat-info">
+          <div class="stat-label">Customers</div>
+          <div class="stat-value" id="statCustomers">—</div>
+          <div class="stat-change">↑ Total registered</div>
+        </div>
+      </div>
+      <div class="stat-card red">
+        <div class="stat-icon">📦</div>
+        <div class="stat-info">
+          <div class="stat-label">Products</div>
+          <div class="stat-value" id="statProducts">—</div>
+          <div class="stat-change">↑ In inventory</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts Row -->
+    <div class="charts-grid">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">📈 Monthly Revenue</span>
+        </div>
+        <div class="chart-container">
+          <canvas id="revenueChart"></canvas>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">🏆 Top Products</span>
+        </div>
+        <div id="topProductsList"></div>
+      </div>
+    </div>
+
+    <!-- Recent Transactions -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">🕒 Recent Transactions</span>
+        <button class="btn btn-outline btn-sm" onclick="navigate('sales')">View All</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th><th>Customer</th><th>Product</th>
+              <th>Qty</th><th>Amount</th><th>Date</th><th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="recentTxBody">
+            <tr><td colspan="7"><div class="skeleton" style="width:100%;height:14px;"></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── OTHER PAGES (loaded by JS modules) ── -->
+  <div class="page" id="page-products"></div>
+  <div class="page" id="page-customers"></div>
+  <div class="page" id="page-sales"></div>
+  <div class="page" id="page-charts"></div>
+  <div class="page" id="page-payments"></div>
+  <div class="page" id="page-reports"></div>
+  <div class="page" id="page-admin"></div>
+</div>
+
+<!-- Toast Container -->
+<div id="toast-container"></div>
+
+<!-- Sidebar overlay for mobile -->
+<div id="sidebarOverlay" style="
+  display:none; position:fixed; inset:0;
+  background:rgba(0,0,0,0.5); z-index:150;"
+  onclick="toggleSidebar()">
+</div>
+
+<!-- ═══════════════════════════════════
+     SCRIPTS
+════════════════════════════════════ -->
+<script src="js/auth.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/products.js"></script>
+<script src="js/customers.js"></script>
+<script src="js/sales.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/payments.js"></script>
+<script src="js/reports.js"></script>
+
+<script>
+// ── Auth Guard ──────────────────────────────────
+const _token = localStorage.getItem('ps_token');
+const _user  = JSON.parse(localStorage.getItem('ps_user') || '{}');
+if (!_token) window.location.href = 'login.html';
+
+// ── Populate User UI ────────────────────────────
+document.getElementById('sidebarName').textContent   = _user.name  || 'User';
+document.getElementById('sidebarRole').textContent   = _user.role  || 'user';
+document.getElementById('sidebarAvatar').textContent = (_user.name || 'U')[0].toUpperCase();
+document.getElementById('welcomeName').textContent   = (_user.name || 'User').split(' ')[0];
+
+// Show admin nav if admin
+if (_user.role === 'admin') {
+  document.getElementById('adminLabel').style.display    = 'block';
+  document.getElementById('adminUsersNav').style.display = 'flex';
+}
+
+// ── Greeting ────────────────────────────────────
+const hr = new Date().getHours();
+document.getElementById('greeting').textContent =
+  hr < 12 ? 'morning' : hr < 18 ? 'afternoon' : 'evening';
+
+// ── Date ────────────────────────────────────────
+document.getElementById('topbarDate').textContent =
+  new Date().toLocaleDateString('en-IN', { weekday:'short', day:'numeric', month:'short', year:'numeric' });
+
+// ── Navigation ──────────────────────────────────
+const pageMeta = {
+  dashboard: { title: 'Dashboard',   sub: 'Business overview'       },
+  products:  { title: 'Products',    sub: 'Manage your inventory'   },
+  customers: { title: 'Customers',   sub: 'Manage customer records' },
+  sales:     { title: 'Sales',       sub: 'Track sales records'     },
+  charts:    { title: 'Analytics',   sub: 'Charts & insights'       },
+  payments:  { title: 'Payments',    sub: 'Payment tracking'        },
+  reports:   { title: 'Reports',     sub: 'Generate & download'     },
+  admin:     { title: 'Admin Panel', sub: 'Manage users & system'   },
+};
+
+function navigate(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+
+  document.getElementById(`page-${page}`).classList.add('active');
+
+  const navItems = document.querySelectorAll('.nav-item');
+  navItems.forEach(n => { if (n.getAttribute('onclick')?.includes(page)) n.classList.add('active'); });
+
+  const meta = pageMeta[page] || { title: page, sub: '' };
+  document.getElementById('pageTitle').textContent    = meta.title;
+  document.getElementById('pageSubtitle').textContent = meta.sub;
+
+  // Close sidebar on mobile
+  if (window.innerWidth <= 768) toggleSidebar(false);
+
+  // Load page content
+  if (page === 'dashboard') loadDashboard();
+  if (page === 'products')  loadProducts();
+  if (page === 'customers') loadCustomers();
+  if (page === 'sales')     loadSales();
+  if (page === 'charts')    loadCharts();
+  if (page === 'payments')  loadPayments();
+  if (page === 'reports')   loadReports();
+  if (page === 'admin')     loadAdmin();
+}
+
+// ── Sidebar Toggle ──────────────────────────────
+function toggleSidebar(force) {
+  const sb  = document.getElementById('sidebar');
+  const ovl = document.getElementById('sidebarOverlay');
+  const open = force !== undefined ? force : !sb.classList.contains('open');
+  sb.classList.toggle('open', open);
+  ovl.style.display = open ? 'block' : 'none';
+}
+
+// ── Toast ───────────────────────────────────────
+function showToast(msg, type = 'success') {
+  const tc = document.getElementById('toast-container');
+  const t  = document.createElement('div');
+  t.className = `toast ${type}`;
+  const icons = { success:'✅', error:'❌', info:'ℹ️' };
+  t.innerHTML = `<span>${icons[type]||'ℹ️'}</span><span>${msg}</span>`;
+  tc.appendChild(t);
+  setTimeout(() => t.remove(), 3500);
+}
+
+// ── API Helper ──────────────────────────────────
+async function api(path, opts = {}) {
+  const token = localStorage.getItem('ps_token');
+  const res = await fetch(`/api${path}`, {
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+    ...opts,
+    body: opts.body ? JSON.stringify(opts.body) : undefined,
+  });
+  const data = await res.json();
+  if (res.status === 401 || res.status === 403) { logout(); return null; }
+  return { ok: res.ok, data };
+}
+
+// ── Logout ──────────────────────────────────────
+function logout() {
+  localStorage.removeItem('ps_token');
+  localStorage.removeItem('ps_user');
+  window.location.href = 'login.html';
+}
+
+// ── Format Currency ─────────────────────────────
+function formatCurrency(n) {
+  return '₹' + parseFloat(n || 0).toLocaleString('en-IN', { minimumFractionDigits: 2 });
+}
+
+// ── Format Date ─────────────────────────────────
+function formatDate(d) {
+  return new Date(d).toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric' });
+}
+
+// ── Status Badge ────────────────────────────────
+function statusBadge(s) {
+  const map = {
+    completed: 'badge-success', pending: 'badge-warning',
+    failed: 'badge-danger', refunded: 'badge-info',
+    active: 'badge-success', inactive: 'badge-danger',
+  };
+  return `<span class="badge ${map[s]||'badge-info'}">${s}</span>`;
+}
+
+// ── Init ────────────────────────────────────────
+loadDashboard();
+</script>
+</body>
+</html>

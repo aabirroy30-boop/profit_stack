@@ -1,0 +1,355 @@
+<!-- customer.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Profit Stack - Customers</title>
+
+  <!-- GOOGLE FONT -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- FONT AWESOME -->
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
+  <!-- CSS -->
+
+  <link rel="stylesheet" href="styles/customer.css">
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+      <div class="sidebar-top">
+
+        <!-- LOGO -->
+
+        <div class="logo">
+
+          <div class="logo-box">
+            <i class="fa-solid fa-wallet"></i>
+          </div>
+
+          <div class="logo-text">
+
+            <h2>Profit Stack</h2>
+
+            <p>ENTERPRISE</p>
+
+          </div>
+
+        </div>
+
+        <!-- MENU -->
+
+        <ul class="menu">
+
+          <li>
+            <a href="#">
+              
+              
+                    
+  <i class="fa-solid fa-table-columns"></i>
+              Dashboard
+
+
+</a>
+             
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <i class="fa-solid fa-money-bill-wave"></i>
+              Sales
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <i class="fa-solid fa-box"></i>
+              Products
+            </a>
+          </li>
+
+          <li class="active">
+            <a href="#">
+              <i class="fa-solid fa-users"></i>
+              Customers
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <i class="fa-solid fa-chart-line"></i>
+              Analytics
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <i class="fa-solid fa-file-lines"></i>
+              Reports
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <i class="fa-solid fa-building-columns"></i>
+              Payments
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+      <!-- SETTINGS -->
+
+      <div class="settings">
+
+        <i class="fa-solid fa-gear"></i>
+
+        Settings
+
+      </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+      <!-- TOPBAR -->
+
+      <header class="topbar">
+
+        <div class="top-search">
+
+          <i class="fa-solid fa-magnifying-glass"></i>
+
+          <input
+            type="text"
+            placeholder="Search customer records..."
+          >
+
+        </div>
+
+        <div class="top-right">
+
+          <i class="fa-regular fa-bell icon"></i>
+
+          <i class="fa-regular fa-circle-question icon"></i>
+
+          <div class="profile">
+
+            <div>
+
+              <h4>Alex Sterling</h4>
+
+              <span>ADMIN</span>
+
+            </div>
+
+            <img
+              src="https://i.pravatar.cc/50"
+              alt="profile"
+            >
+
+          </div>
+
+        </div>
+
+      </header>
+
+      <!-- CONTENT -->
+
+      <section class="content">
+
+        <!-- HEADER -->
+
+        <div class="content-header">
+
+          <div>
+
+            <h1>Customer Management</h1>
+
+            <p>
+              Manage customer profiles, track engagement,
+              and organize customer information.
+            </p>
+
+          </div>
+
+          <!-- ADD CUSTOMER BUTTON -->
+
+          <button
+            class="add-btn"
+            onclick="window.location.href='add_customer.html'"
+          >
+
+            <i class="fa-solid fa-plus"></i>
+
+          </button>
+
+        </div>
+
+        <!-- TABLE BOX -->
+
+        <div class="table-box">
+
+          <!-- TABLE TOP -->
+
+          <div class="table-top">
+
+            <div class="table-search">
+
+              <i class="fa-solid fa-magnifying-glass"></i>
+
+              <input
+                type="text"
+                placeholder="Search by name, email..."
+              >
+
+            </div>
+
+            <div class="table-actions">
+
+              <button>
+
+                <i class="fa-solid fa-filter"></i>
+
+                Filter
+
+              </button>
+
+              <button>
+
+                <i class="fa-solid fa-arrow-up-wide-short"></i>
+
+                Sort
+
+              </button>
+
+            </div>
+
+          </div>
+
+          <!-- TABLE -->
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>NAME</th>
+
+                <th>EMAIL</th>
+
+                <th>PHONE</th>
+
+                <th>ORDERS</th>
+
+                <th>STATUS</th>
+
+              </tr>
+
+            </thead>
+
+            <!-- DYNAMIC TABLE BODY -->
+
+            <tbody id="customerTableBody">
+
+              <!-- EMPTY STATE -->
+
+              <tr id="emptyRow">
+
+                <td colspan="5">
+
+                  <div class="empty-state">
+
+                    <i class="fa-solid fa-users"></i>
+
+                    <h3>No Customers Found</h3>
+
+                    <p>
+                      Customer records from backend will appear here.
+                    </p>
+
+                  </div>
+
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+          
+</a>
+
+          <!-- FOOTER -->
+
+          <div class="table-footer">
+
+            <p id="customerCount">
+              Showing 0 customers
+            </p>
+
+            <div class="pagination">
+
+              <button>
+
+                <i class="fa-solid fa-chevron-left"></i>
+
+              </button>
+
+              <button>
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- JS -->
+
+  <script src="scripts/customer.js"></script>
+
+</body>
+
+</html>

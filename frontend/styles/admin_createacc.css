@@ -1,0 +1,345 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:#f7f7f7;
+  color:#111;
+}
+
+/* NAVBAR */
+
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:24px 60px;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:700;
+}
+
+.nav-buttons{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.login-btn{
+  text-decoration:none;
+  color:#555;
+  font-weight:500;
+}
+
+.create-btn{
+  background:#000;
+  color:#fff;
+  border:none;
+  padding:14px 24px;
+  border-radius:12px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* MAIN */
+
+.main-container{
+  padding:20px 60px 50px;
+}
+
+.signup-card{
+  background:#fff;
+  border:1px solid #e5e5e5;
+  border-radius:24px;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+}
+
+/* LEFT */
+
+.left-section{
+  background:#f8f8f8;
+  padding:50px;
+}
+
+.brand-top{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:25px;
+}
+
+.brand-top h2{
+  font-size:38px;
+  font-weight:700;
+}
+
+.bars{
+  display:flex;
+  gap:5px;
+}
+
+.bars span{
+  width:10px;
+  border-radius:3px;
+  background:#000;
+}
+
+.bars span:nth-child(1){
+  height:30px;
+  opacity:.3;
+}
+
+.bars span:nth-child(2){
+  height:25px;
+  opacity:.6;
+}
+
+.bars span:nth-child(3){
+  height:35px;
+}
+
+.left-section h1{
+  font-size:60px;
+  line-height:1.1;
+  margin-bottom:25px;
+}
+
+.left-section p{
+  color:#666;
+  font-size:22px;
+  line-height:1.6;
+}
+
+/* PREVIEW */
+
+.preview-card{
+  margin-top:50px;
+  background:#fff;
+  border:1px solid #ececec;
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.05);
+}
+
+.preview-header{
+  font-size:12px;
+  color:#777;
+  margin-bottom:20px;
+}
+
+.graph{
+  height:160px;
+  background:#f5f5f5;
+  border-radius:16px;
+  position:relative;
+  overflow:hidden;
+}
+
+.line{
+  position:absolute;
+  width:80%;
+  height:4px;
+  background:#18b56f;
+  top:70%;
+  left:10%;
+  transform:rotate(-12deg);
+  border-radius:10px;
+}
+
+.mini-stats{
+  margin-top:20px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.mini-box{
+  background:#fafafa;
+  border:1px solid #eee;
+  padding:16px;
+  border-radius:14px;
+}
+
+.mini-box h4{
+  font-size:20px;
+  margin-bottom:6px;
+}
+
+.mini-box p{
+  font-size:13px;
+  color:#777;
+}
+
+/* TRUST */
+
+.trusted{
+  margin-top:50px;
+}
+
+.trusted h5{
+  letter-spacing:1px;
+  color:#777;
+  margin-bottom:20px;
+}
+
+.icons{
+  display:flex;
+  gap:35px;
+  font-size:40px;
+  color:#999;
+}
+
+/* BADGE */
+
+.secure-badge{
+  margin-top:50px;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:#e9fff4;
+  color:#16a765;
+  padding:14px 22px;
+  border-radius:40px;
+  font-weight:600;
+}
+
+/* RIGHT */
+
+.right-section{
+  padding:60px;
+}
+
+.right-section h2{
+  font-size:48px;
+  margin-bottom:15px;
+}
+
+.subtitle{
+  color:#666;
+  font-size:20px;
+  margin-bottom:45px;
+}
+
+/* FORM */
+
+form{
+  display:flex;
+  flex-direction:column;
+  gap:30px;
+}
+
+.input-group{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.input-group label{
+  font-weight:500;
+}
+
+.input-box{
+  border:1px solid #ddd;
+  border-radius:14px;
+  padding:18px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  background:#fff;
+}
+
+.input-box input{
+  border:none;
+  outline:none;
+  width:100%;
+  font-size:18px;
+  background:transparent;
+}
+
+.input-box i{
+  color:#777;
+}
+
+/* PASSWORD ROW */
+
+.password-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+/* TERMS */
+
+.terms{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.terms p{
+  color:#555;
+  font-size:14px;
+}
+
+/* BUTTON */
+
+.signup-btn{
+  margin-top:10px;
+  background:#000;
+  color:#fff;
+  border:none;
+  padding:20px;
+  border-radius:14px;
+  font-size:20px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.bottom-text{
+  text-align:center;
+  color:#666;
+}
+
+.bottom-text span{
+  color:#000;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* FOOTER */
+
+.footer{
+  margin-top:50px;
+  border-top:1px solid #ddd;
+  padding:40px 60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.footer h3{
+  font-size:22px;
+}
+
+.footer-links{
+  display:flex;
+  gap:30px;
+}
+
+.footer-links a{
+  color:#666;
+  text-decoration:none;
+}
+
+.footer p{
+  color:#777;
+}

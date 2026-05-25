@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Profit Stack - Add Customer</title>
+
+  <!-- GOOGLE FONT -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- FONT AWESOME -->
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- CSS -->
+
+  <link rel="stylesheet" href="styles/add_customer.css" />
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+      <div class="sidebar-top">
+
+        <div class="logo">
+
+          <h1>Profit Stack</h1>
+
+          <p>Sales Management</p>
+
+        </div>
+
+        <ul class="menu">
+
+          <li>
+            <a href="#">
+              <i class="fa-solid fa-table-columns"></i>
+              Dashboard
+            </a>
+          </li>
+
+          <li class="active">
+            <a href="#">
+              <i class="fa-solid fa-users"></i>
+              Customers
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <i class="fa-solid fa-box"></i>
+              Products
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <i class="fa-solid fa-money-bill-wave"></i>
+              Sales
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <i class="fa-solid fa-chart-line"></i>
+              Analytics
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <i class="fa-solid fa-gear"></i>
+              Settings
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+      <div class="admin-profile">
+
+        <div class="admin-avatar">
+          A
+        </div>
+
+        
+
+      </div>
+
+    </aside>
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+      <!-- TOPBAR -->
+
+      <header class="topbar">
+
+        <div class="search-box">
+
+          <i class="fa-solid fa-magnifying-glass"></i>
+
+          <input type="text" placeholder="Search data..." />
+
+        </div>
+
+        <div class="top-icons">
+
+          <i class="fa-regular fa-bell"></i>
+
+          <i class="fa-regular fa-circle-user"></i>
+
+        </div>
+
+      </header>
+
+      <!-- FORM CARD -->
+
+      <section class="form-card">
+
+        <div class="form-header">
+
+          <div>
+
+            <h1>Add New Customer</h1>
+
+            <p>
+              Create customer profiles and attach purchased products.
+            </p>
+
+          </div>
+
+          <div class="header-image">
+
+            <i class="fa-solid fa-user-plus"></i>
+
+          </div>
+
+        </div>
+
+        <!-- FORM -->
+
+        <form>
+
+          <!-- ROW -->
+
+          <div class="input-row">
+
+            <!-- NAME -->
+
+            <div class="input-group">
+
+              <label>Full Name</label>
+
+              <div class="input-box">
+
+                <i class="fa-regular fa-user"></i>
+
+                <input
+                  type="text"
+                  placeholder="e.g. Jonathan Doe"
+                />
+
+              </div>
+
+            </div>
+
+            <!-- PHONE -->
+
+            <div class="input-group">
+
+              <label>Phone Number</label>
+
+              <div class="input-box">
+
+                <i class="fa-solid fa-phone"></i>
+
+                <input
+                  type="text"
+                  placeholder="+1 (555) 000-0000"
+                />
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- EMAIL -->
+
+          <div class="input-group full-width">
+
+            <label>Email Address</label>
+
+            <div class="input-box">
+
+              <i class="fa-regular fa-envelope"></i>
+
+              <input
+                type="email"
+                placeholder="jonathan@example.com"
+              />
+
+            </div>
+
+          </div>
+
+          <!-- PRODUCTS -->
+
+          <div class="input-group full-width">
+
+            <label>Products</label>
+
+            <div class="product-row">
+
+              <input
+                type="text"
+                placeholder="Add a product name..."
+              />
+
+              <button type="button" class="plus-btn">
+
+                <i class="fa-solid fa-plus"></i>
+
+              </button>
+
+            </div>
+
+          </div>
+
+          <!-- PRODUCT TAGS -->
+
+          <div class="product-tags">
+
+            
+
+          </div>
+
+          <!-- BUTTONS -->
+
+          <div class="form-buttons">
+
+            <button type="button" class="cancel-btn">
+              Cancel
+            </button>
+
+            <button type="submit" class="save-btn">
+              Save Customer
+            </button>
+
+          </div>
+
+        </form>
+
+      </section>
+
+      <!-- FOOTER -->
+
+      <footer class="footer">
+
+        <p>
+          <strong>Profit Stack</strong> © 2026. All rights reserved.
+        </p>
+
+        <div class="footer-links">
+
+          <a href="#">Privacy Policy</a>
+
+          <a href="#">Terms of Service</a>
+
+          <a href="#">Support</a>
+
+        </div>
+
+      </footer>
+
+    </main>
+
+  </div>
+  <script src="scripts/add_customer.js"></script>
+</body>
+
+</html>
